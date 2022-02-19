@@ -1,17 +1,35 @@
  
   shinyUI(fluidPage(theme = shinytheme("cerulean"), 
-  titlePanel( "IZSLER"), 
+                    tags$style(
+                      "p, div { color: red; }"
+                    ),
+  titlePanel( ""), 
   
   
-  navbarPage( "Ricerca",
+  navbarPage( "",
                  tabPanel(
-                   "Home"
+                   "Home", 
+                   fluidPage(
+                     h1("La Ricerca in IZSLER"), 
+                     
+                     setBackgroundImage(
+                       src = "../ricerca.jpg"
+                   )
+                   
+                   
+
+                 )), 
+                 tabPanel(
+                   p("Ricercatori")
                  ), 
                  tabPanel(
-                   "Ricercatori"
-                 ), 
-                 tabPanel(
-                   "Pubblicazioni"
+                   "Pubblicazioni", 
+                   fluidPage(
+                     
+                     tableOutput("paper")
+                     
+                   )
+                   
                  ), 
                  navbarMenu("Linee di Ricerca", 
                    tabPanel("Salute Animale"), 
