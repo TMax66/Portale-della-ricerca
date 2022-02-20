@@ -1,32 +1,46 @@
  
   shinyUI(fluidPage(theme = shinytheme("cerulean"), 
-                    tags$style(
-                      "p, div { color: red; }"
-                    ),
-  titlePanel( ""), 
+                    # tags$style(
+                    #   "p, div { color: red; }"
+                    # ),
+  titlePanel("RICERCA"), 
   
   
-  navbarPage( "",
+  navbarPage( "IZSLER",
                  tabPanel(
                    "Home", 
                    fluidPage(
-                     h1("La Ricerca in IZSLER"), 
-                     
                      setBackgroundImage(
                        src = "../ricerca.jpg"
+                   ),
+                   br(),br(),br(),br(),br(),
+                   
+                   column(4, 
+                   h4("L’ IZSLER svolge attività di RICERCA, di base e finalizzata, 
+                      per lo sviluppo delle conoscenze nell’igiene e sanità veterinaria, 
+                      secondo programmi e mediante convenzioni con Università e Istituti 
+                      di ricerca italiani e stranieri, nonché su richiesta dello Stato, 
+                      di Regioni ed Enti pubblici e privati.")
                    )
-                   
-                   
 
                  )), 
                  tabPanel(
-                   p("Ricercatori")
+                   "Ricercatori"
                  ), 
                  tabPanel(
                    "Pubblicazioni", 
                    fluidPage(
+                     wellPanel( 
+                        
+                       fluidRow( 
+                         column(4, 
+                     selectInput("au", "Ricercatore", 
+                                 choices = unique(factor(pubs$AU)))
+                     )
+                        
+                     )), 
                      
-                     tableOutput("paper")
+                     dataTableOutput("pubblicazioni")
                      
                    )
                    
@@ -42,7 +56,7 @@
                  ), 
                  tabPanel(
                    "Centri di Referenza" 
-                 ), 
+                 )
                  
                  )
                  
