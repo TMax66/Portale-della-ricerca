@@ -9,8 +9,12 @@ paper <- reactive({
     unique() %>%  
     arrange(desc(IF)) %>% 
     mutate(link = str_extract(Journal, urlp), 
-           link = paste0("<a href='",link,"'>",link,"</a>"))
+           link = paste0("<a href='",link,"'target='_blank'>","Vai all'articolo","</a>"))
 })
+
+
+
+
 
 output$pubblicazioni <- renderDataTable(server = FALSE,{ 
   datatable(paper(), class = 'cell-border stripe', rownames=FALSE, escape = FALSE,
@@ -18,5 +22,9 @@ output$pubblicazioni <- renderDataTable(server = FALSE,{
                                                   paging = TRUE,autoWidth = TRUE,
                                                   buttons = c('excel')))
 })
+
+
+
+
 
 }
