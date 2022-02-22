@@ -25,6 +25,23 @@ output$pubblicazioni <- renderDataTable(server = FALSE,{
 
 
 
+# elenco progetti
+
+Prj <- reactive({
+  prj%>%
+    group_by(CodIDIzler, Tipologia, DataInizio, DataFine, Descrizione, RespScient) %>%
+    summarise(Budget = sum(Budget), nUO = n()) #%>%
+  
+})
+
+output$progetti <- renderDataTable( server = FALSE, {  
+              datatable(Prj(), class = 'cell-border stripe', rownames=FALSE,
+                         extensions = 'Buttons',options = list(dom="Brftip", pageLength = 10,
+                                                               paging = TRUE,autoWidth = TRUE,
+                                                               buttons = c('excel')))
+})
+ 
+
 
 
 }

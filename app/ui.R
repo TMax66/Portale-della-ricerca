@@ -1,17 +1,22 @@
  
-  shinyUI(fluidPage(theme = shinytheme("cerulean"), 
+  shinyUI(fluidPage(
+    theme = bs_theme(bootswatch = "cerulean"),
+    
+    #shinythemes::themeSelector(),
+    #theme = shinytheme("cerulean"), 
                     # tags$style(
                     #   "p, div { color: red; }"
                     # ),
-  titlePanel("RICERCA"), 
+  titlePanel(""), 
   
   
   navbarPage( "IZSLER",
+              
                  tabPanel(
                    "Home", 
                    fluidPage(
                      setBackgroundImage(
-                       src = "../ricerca.jpg"
+                       src = "../Cattura.PNG"
                    ),
                    br(),br(),br(),br(),br(),
                    
@@ -30,15 +35,16 @@
                  tabPanel(
                    "Pubblicazioni", 
                    fluidPage(
-                     wellPanel( 
-                        
+                     column(4, 
+                      
+                        br(),
                        fluidRow( 
-                         column(4, 
+                         
                      selectInput("au", "Ricercatore", 
                                  choices = unique(factor(pubs$AU)))
-                     )
-                        
+                    
                      )), 
+                     br(),br(), br(), 
                      
                      dataTableOutput("pubblicazioni")
                      
@@ -52,7 +58,25 @@
                    ), 
               
                  tabPanel(
-                "Progetti di Ricerca"
+                "Progetti di Ricerca", 
+                fluidPage(
+                  # column(4, 
+                  #        
+                  #        br(),
+                  #        fluidRow( 
+                  #          
+                  #          selectInput("au", "Ricercatore", 
+                  #                      choices = unique(factor(pubs$AU)))
+                  #          
+                  #        )), 
+                  br(),br(), br(), 
+                  
+                  dataTableOutput("progetti")
+                  
+                )
+                
+                
+                
                  ), 
                  tabPanel(
                    "Centri di Referenza" 
