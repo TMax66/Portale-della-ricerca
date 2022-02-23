@@ -30,7 +30,7 @@ output$pubblicazioni <- renderDataTable(server = FALSE,{
 Prj <- reactive({
   prj%>%
     group_by(CodIDIzler, Tipologia, DataInizio, DataFine, Descrizione, RespScient) %>%
-    summarise(Budget = sum(Budget), nUO = n()) #%>%
+    summarise(Budget = sum(Budget)) #%>%
   
 })
 
