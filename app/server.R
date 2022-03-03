@@ -29,8 +29,13 @@ output$pubblicazioni <- renderDataTable(server = FALSE,{
 
 Prj <- reactive({
   prj%>%
-    group_by(CodIDIzler, Tipologia, DataInizio, DataFine, Descrizione, RespScient) %>%
-    summarise(Budget = sum(Budget)) #%>%
+    group_by(CodIDIzler, Tipologia, DataInizio, DataFine, Descrizione, RespScient, BudgetTotale,NumUoProgetto ) %>%
+    count( ) %>%  
+    select(-n) %>%  View()
+    
+     
+
+    mutate(N.UO = max(NumUoProgetto)) %>% 
   
 })
 
