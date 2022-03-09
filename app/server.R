@@ -1,10 +1,16 @@
 server <- function(input, output, session){
 
+#ricercatori
+  
+output$tableric <- DT::renderDataTable({
+  DT::datatable(ric, escape = FALSE)
+})
+  
 
 #elenco pubblicazioni
 paper <- reactive({
   pubs %>%   
-    filter(AU == input$au) %>% 
+    filter(str_detect(AU, input$au)) %>% 
     select(  Anno = OA, Autori = "CAU" ,  "TITOLO" = `TI-INGLESE`, "Journal" = datoBibl,  "IF") %>%  
     unique() %>%  
     arrange(desc(IF)) %>% 
@@ -31,12 +37,7 @@ Prj <- reactive({
   prj%>%
     group_by(CodIDIzler, Tipologia, DataInizio, DataFine, Descrizione, RespScient, BudgetTotale,NumUoProgetto ) %>%
     count( ) %>%  
-    select(-n) %>%  View()
-    
-     
-
-    mutate(N.UO = max(NumUoProgetto)) %>% 
-  
+    select(-n)  
 })
 
 output$progetti <- renderDataTable( server = FALSE, {  

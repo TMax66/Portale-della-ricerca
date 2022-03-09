@@ -30,7 +30,8 @@
 
                  )), 
                  tabPanel(
-                   "Ricercatori"
+                   "Ricercatori", 
+                   dataTableOutput("tableric")
                  ), 
                  tabPanel(
                    "Pubblicazioni", 
@@ -40,8 +41,9 @@
                         br(),
                        fluidRow( 
                          
-                     selectInput("au", "Ricercatore", 
-                                 choices = unique(factor(pubs$AU)))
+                     # selectInput("au", "Ricercatore", 
+                     #             choices = unique(factor(pubs$AU)))
+                         textInput("au", "Cerca autore")
                     
                      )), 
                      br(),br(), br(), 
@@ -93,4 +95,53 @@
  
  
  
- 
+ # titlePanel('Demo for Well Panel'),
+ #  fluidRow(
+ #  align = 'center',
+ #  ### well panel 1
+ #  column(
+ #    width = 4,
+ #    wellPanel(
+ #      style = 'background-color: #696969; color: #ffffff;',
+ #      h4('Number of Orders'),
+ #      htmlOutput(
+ #        outputId = 'nOrders'
+ #      )
+ #    )
+ #  ),
+ #  ### well panel 2
+ #  column(
+ #    width = 4,
+ #    wellPanel(
+ #      style = 'background-color: #696969; color: #ffffff; bold = TRUE',
+ #      h4('Sales Revenues'),
+ #      htmlOutput(
+ #        outputId = 'totSales'
+ #      )
+ #    )
+ #  ),
+ #  ### well panel 3
+ #  column(
+ #    width = 4,
+ #    wellPanel(
+ #      style = 'background-color: #696969; color: #ffffff;',
+ #      h4('Average Order Value (AOV)'),
+ #      htmlOutput(
+ #        outputId = 'aov'
+ #      )
+ #    )
+ #   )
+ #  ),
+ #  hr(),
+ #  sidebarLayout(
+ #    sidebarPanel(
+ #      # style = 'background-color: #ffa700; color: #ffffff;',
+ #      selectInput(
+ #        inputId = 'prod_type',
+ #        label = 'Product Type:',
+ #        choices = prodtype$prod_type,
+ #        selected = 'Macbook'),
+ #    ),
+ #    mainPanel(
+ #    )
+ #  )

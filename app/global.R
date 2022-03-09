@@ -13,5 +13,6 @@ pubs<- readRDS(here( "data", "processed",  "pub.rds"))
 
 prj <- readRDS(here("data", "processed",  "prj.rds"))
 
+ric <- read_excel(here("data", "raw", "ricercatori.xlsx"))
 
 urlp <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
